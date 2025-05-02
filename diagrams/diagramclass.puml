@@ -1,0 +1,44 @@
+@startuml Simulador de Riesgos en Sprints Ágiles
+skinparam classAttributeIconSize 0
+
+class RiskSimulator {
+  - risk_types: List[str]
+  - risk_descriptions: Dict[str, List[str]]
+  - mitigation_strategies: Dict[str, List[str]]
+  --
+  + generate_risk() -> Dict[str, Any]
+  + calculate_priority(probability: int, impact: int) -> Tuple[int, str]
+  - _categorize_priority(priority_value: int) -> str
+  + suggest_mitigation(priority_category: str) -> str
+  + run_sprint_simulation(num_risks: int = 5) -> List[Dict]
+}
+
+class RiskSimulatorGUI {
+  - simulator: RiskSimulator
+  - root: tk.Tk
+  - risk_count: tk.IntVar
+  - tree: ttk.Treeview
+  - stats_text: scrolledtext.ScrolledText
+  --
+  + __init__(root: tk.Tk)
+  - setup_ui()
+  - run_simulation()
+  - show_statistics(risks: List[Dict])
+  - run_unit_tests()
+  - export_to_csv()
+  - clear_results()
+}
+
+class TestRiskSimulator {
+  - simulator: RiskSimulator
+  --
+  + setUp()
+  + test_calculate_priority()
+  + test_invalid_inputs()
+  + test_integration_flow()
+}
+
+RiskSimulatorGUI --> RiskSimulator : uses
+TestRiskSimulator --> RiskSimulator : tests
+
+@enduml

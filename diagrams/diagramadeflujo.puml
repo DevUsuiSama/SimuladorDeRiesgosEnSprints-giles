@@ -1,0 +1,38 @@
+@startuml Simulador de Riesgos en Sprints Ágiles
+start
+
+:Iniciar aplicación;
+if (¿Mostrar GUI?) then (Sí)
+  :Crear ventana principal;
+  :Configurar interfaz gráfica;
+  repeat
+    :Esperar acción del usuario;
+    if (¿Ejecutar simulación?) then (Sí)
+      :Obtener parámetros de entrada;
+      :Generar riesgos aleatorios;
+      :Calcular prioridad para cada riesgo;
+      :Categorizar riesgos;
+      :Generar estrategias de mitigación;
+      :Mostrar resultados en tabla;
+      :Mostrar estadísticas;
+    else if (¿Ejecutar pruebas?) then (Sí)
+      :Ejecutar pruebas unitarias;
+      :Mostrar resultados de pruebas;
+    else if (¿Exportar a CSV?) then (Sí)
+      :Guardar datos en archivo CSV;
+    else if (¿Limpiar resultados?) then (Sí)
+      :Borrar tabla y estadísticas;
+    else (No)
+      :Ninguna acción;
+    endif
+  repeat while (¿Cerrar aplicación?) is (No)
+  :Cerrar ventana;
+else (No)
+  :Ejecutar en modo consola;
+  :Generar riesgos;
+  :Calcular prioridades;
+  :Mostrar resultados;
+endif
+
+stop
+@enduml
